@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "alg.h": "c",
+        "render.h": "c",
+        "main.h": "c",
+        "raylib.h": "c"
+    }
+}
