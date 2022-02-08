@@ -11,6 +11,9 @@
 #define PURPLE "\x1B[35m"
 #define RESET "\x1b[0m"
 
+#define MOV_CUR_LEFT(x)  printf("\x1B[%dD", x);
+#define MOV_CUR_UP(x)    printf("\x1B[%dA", x);
+
 
 typedef struct Cell Cell;
 typedef struct Maze Maze;

@@ -90,6 +90,14 @@ void freeMaze(Maze* maze) {
 
 
 void printMaze(Maze maze, int i, int j) {
+    static bool drawn = false;
+
+    if (!drawn) drawn = true;
+    else {
+        MOV_CUR_LEFT(maze.n);
+        MOV_CUR_UP(maze.m);
+    }
+
     for (int y=0; y<maze.n; y++) {
         for (int x=0; x<maze.m; x++) {
             if (maze.cells[y][x]->broken) {
@@ -110,11 +118,11 @@ void printMaze(Maze maze, int i, int j) {
         printf("\n");
     }
     printf("\n");
+    SLEEP;
 }
 
 
 void _breakCell(Maze maze, Cell* cell, Cell* last_wall) {
-    SLEEP;
     printMaze(maze, cell->i, cell->j);
     int choice = 0;
 
@@ -142,7 +150,6 @@ void _breakCell(Maze maze, Cell* cell, Cell* last_wall) {
             _breakCell(maze, cell->bottom, maze.cells[cell->i+1][cell->j]);
         }
     }
-    SLEEP;
     printMaze(maze, cell->i, cell->j);
     cell->visited = true;
     last_wall->visited = true;
